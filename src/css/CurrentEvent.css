@@ -1,6 +1,5 @@
 .CurrentEvent {
   grid-row: 1/3;
-  background-image: url("./img/firework.jpg");
   background-size: cover;
   display: flex;
   flex-direction: column;

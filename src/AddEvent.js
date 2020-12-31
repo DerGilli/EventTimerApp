@@ -1,64 +1,72 @@
-import React from 'react';
-import './AddEvent.css'
+import React, { useState } from 'react';
+import './css/AddEvent.css'
+import Progressbar from './Progressbar';
 
-class AddEvent extends React.Component {
+const AddEvent = ({ addNewEvent }) => {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      addNewEvent: false,
-      value: "",
-      date: ""
-    };
+  const [showInput, setShowInput] = useState(false);
+  const [eventName, setEventName] = useState('');
+  const [eventDate, setEventDate] = useState('');
+  const [imageUrl, setImageUrl] = useState(null);
+  const [file, setFile] = useState(null);
+  const allowedTypes = ['image/png', 'image/jpeg'];
+
+
+  const handleDateChange = (e) => {
+    setEventDate(e.target.value);
   }
 
-  showInput(e) {
-    this.setState({ addNewEvent: true });
+  const handleNameChange = (e) => {
+    setEventName(e.target.value)
   }
 
-  handleDateChange(e) {
-    this.setState({ date: e.target.value })
-    this.props.newEvent.date = e.target.value;
-  }
-
-  handleNameChange(e) {
-    this.setState({ value: e.target.value })
-    this.props.newEvent.name = e.target.value;
-  }
-
-  handleAddEvent(e) {
-    this.setState({ addNewEvent: false });
-    this.props.addNewEvent()
-  }
-
-  render() {
-    const addNewEvent = this.state.addNewEvent;
-    let button;
-    if (!addNewEvent) {
-      button =
-        <button className="btn-add" onClick={(e) => this.showInput(e)} >Add Event</button>
+  const handleFileChange = (e) => {
+    let selectedFile = e.target.files[0];
+    if (selectedFile && allowedTypes.includes(selectedFile.type)) {
+      setFile(selectedFile)
     } else {
-      button =
-        <div className="AddEvent">
-          <input
-            type="text"
-            placeholder="name"
-            value={this.state.value}
-            onChange={(e) => this.handleNameChange(e)}>
-          </input>
-          <input
-            onChange={(e) => this.handleDateChange(e)}
-            type="datetime-local"
-            placeholder="datum"
-            value={this.state.date}>
-          </input>
-          <button onClick={(e) => this.handleAddEvent(e)} >+</button>
-        </div>
+      setFile(null)
     }
-    return (
-      button
-    );
   }
+
+  const handleAddEvent = (e) => {
+    setShowInput(false);
+    addNewEvent({
+      name: eventName,
+      date: eventDate,
+      url: imageUrl
+    })
+    setImageUrl(null)
+  }
+
+
+  let button;
+  if (!showInput) {
+    button =
+      <button className="btn-add" onClick={(e) => setShowInput(true)} >Add Event</button>
+  } else {
+    button =
+      <div className="AddEvent">
+        <input
+          type="text"
+          placeholder="name"
+          value={eventName}
+          onChange={(e) => handleNameChange(e)} />
+        <input
+          onChange={(e) => handleDateChange(e)}
+          type="datetime-local"
+          placeholder="datum"
+          value={eventDate} />
+        <input
+          type="file"
+          onChange={handleFileChange} />
+        {file && <Progressbar file={file} setFile={setFile} setImageUrl={setImageUrl} />}
+        <button onClick={(e) => handleAddEvent(e)} disabled={file && !imageUrl ? true : false} >+</button>
+      </div>
+  }
+
+  return button
+
 }
 
 export default AddEvent;

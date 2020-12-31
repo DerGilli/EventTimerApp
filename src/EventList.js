@@ -1,20 +1,20 @@
 import React from 'react';
-import "./EventList.css";
+import "./css/EventList.css";
 import EventListItem from "./EventListItem.js";
 
-class EventList extends React.Component {
+const EventList = ({ events, changeCurrentEvent, deleteEvent }) => {
 
-  render() {
-    const events = this.props.events.map((x) => <EventListItem
-      key={x.date} event={x}
-      changeCurrentEvent={this.props.changeCurrentEvent}
-      deleteEvent={this.props.deleteEvent} />)
-    return (
-      <ul className="EventList">
-        {events}
-      </ul>
-    )
-  }
+  const eventItmes = events.map((x, idx) =>
+    <EventListItem
+      key={idx} event={x}
+      changeCurrentEvent={changeCurrentEvent}
+      deleteEvent={deleteEvent} />)
+
+  return (
+    <ul className="EventList">
+      {eventItmes}
+    </ul>
+  )
 }
 
 export default EventList; 

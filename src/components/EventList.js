@@ -1,6 +1,7 @@
 import React from 'react';
-import "./css/EventList.css";
+//import "../css/EventList.css";
 import EventListItem from "./EventListItem.js";
+import ListGroup from 'react-bootstrap/ListGroup'
 
 const EventList = ({ events, changeCurrentEvent, deleteEvent }) => {
 
@@ -11,9 +12,9 @@ const EventList = ({ events, changeCurrentEvent, deleteEvent }) => {
       deleteEvent={deleteEvent} />)
 
   return (
-    <ul className="EventList">
+    <ListGroup variant="flush">
       {eventItmes}
-    </ul>
+    </ListGroup>
   )
 }
 

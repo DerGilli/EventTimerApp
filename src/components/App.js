@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
-import './css/App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+//import '../css/App.css';
 import CurrentEvent from './CurrentEvent';
 import AddEvent from './AddEvent';
 import EventList from './EventList';
+import Navbar from 'react-bootstrap/Navbar'
+import Container from 'react-bootstrap/Container'
+import { Col, Row } from 'react-bootstrap';
 
 const App = () => {
 
@@ -55,14 +59,25 @@ const App = () => {
   }
 
   return (
-    <div className="App">
-      <CurrentEvent event={currentEvent} />
-      <AddEvent addNewEvent={(event) => addNewEvent(event)} />
-      <EventList
-        events={events}
-        changeCurrentEvent={(selectedEvent) => changeCurrentEvent(selectedEvent)}
-        deleteEvent={(eventToDelete) => deleteEvent(eventToDelete)} />
-    </div>
+    <Container fluid className="d-flex flex-column min-vh-100" >
+      <Row>
+        <Navbar className="d-block bg-dark w-100" expand="lg">
+          <Navbar.Brand className="text-light px-5">Event Timer</Navbar.Brand>
+        </Navbar>
+      </Row>
+      <Row className="py-3" style={{ flex: "1 1 auto" }}>
+        <Col>
+          <CurrentEvent event={currentEvent} />
+        </Col>
+        <Col md="auto" lg="3" className="d-flex flex-column justify-content-between">
+          <EventList
+            events={events}
+            changeCurrentEvent={(selectedEvent) => changeCurrentEvent(selectedEvent)}
+            deleteEvent={(eventToDelete) => deleteEvent(eventToDelete)} />
+          <AddEvent className="w-100" addNewEvent={(event) => addNewEvent(event)} />
+        </Col>
+      </Row>
+    </Container>
   );
 }
 

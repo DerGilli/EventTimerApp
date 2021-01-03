@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import './css/CurrentEvent.css'
+//import '../css/CurrentEvent.css'
+import Card from 'react-bootstrap/Card'
 
 
 const CurrentEvent = ({ event }) => {
@@ -35,10 +36,16 @@ const CurrentEvent = ({ event }) => {
   let s = Math.floor((dist % (1000 * 60)) / 1000);
 
   return (
-    <div className="CurrentEvent" style={{ backgroundImage: 'url(' + event.url + ')' }}>
-      <h1>{event.name}</h1>
-      <h1>{d} Days, {h} Hours, {m} Minutes, {s} Seconds</h1>
-    </div>
+    // <div className="CurrentEvent" style={{ backgroundImage: 'url(' + event.url + ')' }}>
+    //   <h1>{event.name}</h1>
+    //   <h1></h1>
+    // </div>
+    <Card className="h-100 d-flex justify-content-end" style={{ backgroundImage: 'url(' + event.url + ')', backgroundSize: "cover" }}>
+      <Card.Title as="h1" className="w-100 text-center m-0 py-2 text-white" style={{ backgroundColor: "rgba(0,0,0,0.8)" }}>{event.name}</Card.Title>
+      <Card.Text as="h2" className="w-100 text-center mb-5 py-2 text-white" style={{ backgroundColor: "rgba(0,0,0,0.8)" }}>
+        {d} Days, {h} Hours, {m} Minutes, {s} Seconds
+            </Card.Text>
+    </Card >
   );
 }
 

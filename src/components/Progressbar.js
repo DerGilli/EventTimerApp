@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
-import useStorage from './hooks/useStorage';
-import './css/ProgressBar.css'
+import useStorage from '../hooks/useStorage';
+//mport '../css/ProgressBar.css'
+import ProgressBar from 'react-bootstrap/ProgressBar'
 
 const Progressbar = ({ file, setFile, setImageUrl }) => {
 
@@ -15,7 +16,7 @@ const Progressbar = ({ file, setFile, setImageUrl }) => {
   }, [url, setFile, setImageUrl])
 
   return (
-    <div className="progress-bar" style={{ width: progress + '%' }}></div>
+    <ProgressBar now={progress} label={`${Math.floor(progress)}%`}></ProgressBar>
   )
 }
 export default Progressbar;

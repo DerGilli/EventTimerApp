@@ -19,8 +19,8 @@ const EventListItem = ({ event, deleteEvent, changeCurrentEvent }) => {
 
   return (
     <ListGroup.Item action onClick={(e) => handleClick(e)} as="div" className="d-flex justify-content-between align-items-center">
-      <label className="m-0 h3">{event.name}</label>
-      <Button variant="danger" onClick={(e) => handleDelete(e)}><FontAwesomeIcon icon={faTrashAlt} /></Button>
+      <label style={{fontSize: ".8em"}} className="m-0">{event.name}</label>
+      <Button style={{lineHeight: "1"}} size="sm" variant="danger" onClick={(e) => handleDelete(e)}><FontAwesomeIcon icon={faTrashAlt} /></Button>
     </ListGroup.Item>
   )
 }

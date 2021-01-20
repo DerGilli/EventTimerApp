@@ -40,9 +40,9 @@ const CurrentEvent = ({ event }) => {
     //   <h1>{event.name}</h1>
     //   <h1></h1>
     // </div>
-    <Card className="h-100 d-flex justify-content-end" style={{ backgroundImage: 'url(' + event.url + ')', backgroundSize: "cover" }}>
-      <Card.Title as="h1" className="w-100 text-center m-0 py-2 text-white" style={{ backgroundColor: "rgba(0,0,0,0.8)" }}>{event.name}</Card.Title>
-      <Card.Text as="h2" className="w-100 text-center mb-5 py-2 text-white" style={{ backgroundColor: "rgba(0,0,0,0.8)" }}>
+    <Card className="d-flex justify-content-end" style={{ backgroundImage: 'url(' + event.url + ')', backgroundSize: "cover", backgroundPosition: "center", minHeight: "200px", flex: "1 1 0" }}>
+      <Card.Title as="h1" className="w-100 text-center m-0 py-2 text-white" style={{ backgroundColor: "rgba(0,0,0,0.4)", fontSize: "1em" }}>{event.name}</Card.Title>
+      <Card.Text as="h2" className="w-100 text-center mb-2 py-2 text-white" style={{ backgroundColor: "rgba(0,0,0,0.4)", fontSize: "1em" }}>
         {d} Days, {h} Hours, {m} Minutes, {s} Seconds
             </Card.Text>
     </Card >

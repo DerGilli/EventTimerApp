@@ -67,7 +67,7 @@ function Dashboard() {
   }
 
   return (
-    <Container>
+    <Container className="d-flex flex-column" style={{ minHeight: "70vh", flex: "1 1 0" }}>
       <CurrentEvent event={currentEvent} />
       <EventList
         events={events}

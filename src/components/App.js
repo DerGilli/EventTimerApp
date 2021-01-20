@@ -16,7 +16,6 @@ const App = () => {
       <AuthProvider>
         <Header />
         <Container className="d-flex align-items-center justify-content-center py-2" style={{ flex: "1 1 0" }} >
-          <div className="w-100" style={{ maxWidth: "400px" }}>
             <Router>
               <Switch>
                 <PrivateRoute exact path="/" component={Dashboard} />
@@ -24,7 +23,6 @@ const App = () => {
                 <Route path="/login" component={Login} />
               </Switch>
             </Router>
-          </div>
         </Container>
       </AuthProvider>
     </>

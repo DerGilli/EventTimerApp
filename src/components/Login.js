@@ -21,6 +21,8 @@ function Login() {
     } catch (error) {
       console.log(error)
       setError(error.message)
+      setloading(false)
+      return
     }
     setloading(false)
     history.push("/")

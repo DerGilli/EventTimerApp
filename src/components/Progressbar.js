@@ -6,7 +6,6 @@ import ProgressBar from 'react-bootstrap/ProgressBar'
 const Progressbar = ({ file, setFile, setImageUrl }) => {
 
   const { url, progress } = useStorage(file)
-  console.log(progress, url)
 
   useEffect(() => {
     if (url) {
